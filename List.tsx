@@ -5,6 +5,8 @@ import { Product } from "./Product";
 
 export function List(props) {
   const [data, setData] = useState<Product[]>([]);
+  const [cart, setCart] = useState({});
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then(res => res.json())
@@ -24,8 +26,7 @@ export function List(props) {
 const listContainer = {
   display: "flex",
   flexDirection: "row",
-  flexWrap: "wrap",
-  maxWidth: "975px"
+  flexWrap: "wrap"
 };
 
 export interface Product {

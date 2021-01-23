@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import { Header } from "./Header";
 import { List } from "./List";
 import "./style.css";
 
@@ -16,6 +17,7 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div>
+        <Header />
         <List />
       </div>
     );
