@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { Product } from "./Product";
 
 export function List(props) {
   const [data, setData] = useState<Product[]>([]);
@@ -10,27 +11,24 @@ export function List(props) {
       .then(products => setData(products));
   }, []);
   return (
-    <div>
-      <ul>
-        {data.length ? (
-          data.map(item => {
-            return <li>{item.title}</li>;
-          })
-        ) : (
-          <Loader
-            type="Bars"
-            color="#00BFFF"
-            height={100}
-            width={100}
-            timeout={3000} //3 secs
-          />
-        )}
-      </ul>
+    <div style={listContainer}>
+      {data.length ? (
+        data.map(item => <Product key={item.id} {...item} />)
+      ) : (
+        <Loader type="Bars" color="#00BFFF" height={100} width={100} />
+      )}
     </div>
   );
 }
 
-interface Product {
+const listContainer = {
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  maxWidth: "975px"
+};
+
+export interface Product {
   id: number;
   title: string;
   price: string;
