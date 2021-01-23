@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import { HiOutlineShoppingCart } from "react-icons/hi";
-import ClipLoader from "react-spinners/ClipLoader";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 export function List(props) {
   const [data, setData] = useState<Product[]>([]);
@@ -17,7 +17,13 @@ export function List(props) {
             return <li>{item.title}</li>;
           })
         ) : (
-          <ClipLoader />
+          <Loader
+            type="Bars"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+          />
         )}
       </ul>
     </div>
